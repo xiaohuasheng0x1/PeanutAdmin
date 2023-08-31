@@ -1,0 +1,46 @@
+<?php
+declare(strict_types=1);
+
+
+namespace {NAMESPACE};
+
+{USE}
+use Hyperf\Di\Annotation\Inject;
+use Hyperf\HttpServer\Annotation\Controller;
+use Hyperf\HttpServer\Annotation\DeleteMapping;
+use Hyperf\HttpServer\Annotation\GetMapping;
+use Hyperf\HttpServer\Annotation\PostMapping;
+use Hyperf\HttpServer\Annotation\PutMapping;
+use App\Common\Annotation\Auth;
+use App\Common\Annotation\RemoteState;
+use App\Common\Annotation\OperationLog;
+use App\Common\Annotation\Permission;
+use App\Common\Abstracts\AbstractsController;
+use Psr\Http\Message\ResponseInterface;
+
+/**
+ * {COMMENT}
+ * Class {CLASS_NAME}
+ */
+#[Controller(prefix: "{CONTROLLER_ROUTE}"), Auth]
+class {CLASS_NAME} extends AbstractsController
+{
+    /**
+     * 业务处理服务
+     * {SERVICE}
+     */
+    #[Inject]
+    protected {SERVICE} $service;
+
+    {FUNCTIONS}
+
+    /**
+     * 远程万能通用列表接口
+     * @return ResponseInterface
+     */
+    #[PostMapping("remote"), RemoteState(true)]
+    public function remote(): ResponseInterface
+    {
+        return $this->success($this->service->getRemoteList($this->request->all()));
+    }
+}

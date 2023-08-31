@@ -1,0 +1,117 @@
+{
+  "name": "peanutadmin/peanutadmin",
+  "type": "project",
+  "keywords": [
+    "peanutadmin",
+    "swoole",
+    "hyperf"
+  ],
+  "homepage": "https://www.peanutadmin.com/",
+  "description": "Quickly build a background management system for web applications",
+  "license": "Apache-2.0",
+  "require": {
+    "php": ">=8.0",
+    "ext-gd": "*",
+    "ext-json": "*",
+    "ext-openssl": "*",
+    "ext-pdo": "*",
+    "ext-pdo_mysql": "*",
+    "ext-redis": "*",
+    "ext-swoole": ">=4.5",
+    "doctrine/dbal": "^3.1",
+    "hyperf/di": "3.0.*",
+    "hyperf/amqp": "3.0.*",
+    "hyperf/async-queue": "3.0.*",
+    "hyperf/cache": "3.0.*",
+    "hyperf/codec": "^3.0",
+    "hyperf/command": "3.0.*",
+    "hyperf/config": "3.0.*",
+    "hyperf/crontab": "3.0.*",
+    "hyperf/database": "3.0.*",
+    "hyperf/db-connection": "3.0.*",
+    "hyperf/filesystem": "^3.0",
+    "hyperf/flysystem-oss": "^1.2",
+    "hyperf/framework": "3.0.*",
+    "hyperf/guzzle": "3.0.*",
+    "hyperf/http-server": "3.0.*",
+    "hyperf/logger": "3.0.*",
+    "hyperf/memory": "3.0.*",
+    "hyperf/model-cache": "3.0.*",
+    "hyperf/paginator": "3.0.*",
+    "hyperf/pool": "3.0.*",
+    "hyperf/process": "3.0.*",
+    "hyperf/redis": "3.0.*",
+    "hyperf/snowflake": "3.0.*",
+    "hyperf/support": "^3.0",
+    "hyperf/translation": "3.0.*",
+    "hyperf/validation": "3.0.*",
+    "hyperf/websocket-server": "3.0.*",
+    "overtrue/flysystem-cos": "^5.0",
+    "overtrue/flysystem-qiniu": "^3.0",
+    "symfony/property-access": "^6.0",
+    "tangwei/apidocs": "^2.1",
+    "yurunsoft/phpmailer-swoole": "^1.0",
+    "zoujingli/ip2region": "2.0.*",
+    "ramsey/uuid": "^4.7",
+    "phpoffice/phpspreadsheet": "^1.24",
+    "xmo/jwt-auth": "0.6.*"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.0",
+    "hyperf/devtool": "3.0.*",
+    "hyperf/ide-helper": "3.0.*",
+    "hyperf/testing": "3.0.*",
+    "hyperf/watcher": "3.0.*",
+    "mockery/mockery": "^1.0",
+    "phpstan/phpstan": "^1.0",
+    "swoole/ide-helper": "^5.0"
+  },
+  "suggest": {
+    "ext-openssl": "Required to use HTTPS.",
+    "ext-json": "Required to use JSON.",
+    "ext-pdo": "Required to use MySQL Client.",
+    "ext-pdo_mysql": "Required to use MySQL Client.",
+    "ext-redis": "Required to use Redis Client."
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "HyperfTest\\": "./test/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true,
+    "allow-plugins": {
+      "composer/package-versions-deprecated": true
+    }
+  },
+  "extra": [],
+  "scripts": {
+    "post-root-package-install": [
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    ],
+    "post-autoload-dump": [
+      "rm -rf runtime/container"
+    ],
+    "test": "co-phpunit --prepend test/bootstrap.php -c phpunit.xml --colors=always",
+    "cs-fix": "php-cs-fixer fix $1",
+    "analyse": "phpstan analyse --memory-limit 300M -l 0 -c phpstan.neon ./app ./config",
+    "start": [
+      "Composer\\Config::disableProcessTimeout",
+      "php ./bin/hyperf.php start"
+    ]
+  },
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://mirrors.tencent.com/composer/"
+    }
+  }
+}

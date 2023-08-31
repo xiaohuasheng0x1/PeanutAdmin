@@ -1,0 +1,22 @@
+<?php
+declare(strict_types=1);
+namespace {NAMESPACE};
+
+{USE}
+use App\Common\Abstracts\AbstractService;
+
+/**
+ * {COMMENT}
+ */
+class {CLASS_NAME} extends AbstractService
+{
+    /**
+     * @var {MAPPER}
+     */
+    public $mapper;
+
+    public function __construct({MAPPER} $mapper)
+    {
+        $this->mapper = $mapper;
+    }
+}

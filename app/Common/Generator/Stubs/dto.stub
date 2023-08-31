@@ -1,0 +1,15 @@
+<?php
+namespace {NAMESPACE};
+
+use App\Common\Interfaces\PaModelExcel;
+use App\Common\Annotation\ExcelData;
+use App\Common\Annotation\ExcelProperty;
+
+/**
+ * {COMMENT}
+ */
+#[ExcelData]
+class {CLASS_NAME} implements PaModelExcel
+{
+{LIST}
+}
